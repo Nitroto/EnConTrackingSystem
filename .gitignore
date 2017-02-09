@@ -3,5 +3,5 @@
 # Ignore packages folder
 packages/
 .vs/
-#EnConTrackingSystem/bin/
-#EnConTrackingSystem/obj/
+EnConTrackingSystem/bin/
+EnConTrackingSystem/obj/
