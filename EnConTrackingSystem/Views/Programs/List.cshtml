@@ -1,0 +1,51 @@
+﻿@model IEnumerable<EnConTrackingSystem.Models.Program>
+@{
+    ViewBag.Title = EnConTrackingSystem.App_GlobalResources.Lang.Programs;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@EnConTrackingSystem.App_GlobalResources.Lang.Programs</h2>
+
+<p>
+    @Html.ActionLink("New program", "New", "Programs", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="programs" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Program Name</th>
+            <th>Start Date</th>
+            <th>End Data</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $('#programs').DataTable({
+                ajax: {
+                    url: '/api/programs',
+                    dataSrc: ''
+                },
+                columns: [
+                    {
+                        data: 'Name',
+                        render: function (data, type, program) {
+                            console.log(program);
+                            return "<a href='/programs/edit/" + program.id + "'>" + program.Name + "</a>";
+                        }
+                    },
+                    {
+                        data: 'StartDate'
+                    },
+                    {
+                        data: 'EndDate'
+                    }
+                ]
+            });
+        });
+    </script>
+}
