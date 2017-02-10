@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Runtime.Versioning
+@using EnConTrackingSystem.Controllers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,14 +19,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.AppName, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.Programs, "Index", "Programs")</li>
+                    <li>@Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.RecentProjects, "About", "Home")</li>
+                    <li>@Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.EmergencyProjects, "Contact", "Home")</li>
                 </ul>
+
+                @*@Html.Partial("../Language/Dropdown")*@
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -33,7 +38,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - EnCon Tracking System</p>
         </footer>
     </div>
 
