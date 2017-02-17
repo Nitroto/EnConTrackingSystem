@@ -68,5 +68,15 @@ namespace EnConTrackingSystem.Controllers
         {
             this._context.Dispose();
         }
+
+        public ActionResult Edit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult Delete()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

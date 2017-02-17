@@ -657,7 +657,7 @@
     <Content Include="Views\Programs\List.cshtml" />
     <Content Include="Views\Programs\ProgramForm.cshtml" />
     <Content Include="Views\Programs\ListProjects.cshtml" />
-    <Content Include="Views\Projects\New.cshtml" />
+    <Content Include="Views\Projects\ProjectForm.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>

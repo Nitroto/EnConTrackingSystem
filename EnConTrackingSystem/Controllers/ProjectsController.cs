@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using EnConTrackingSystem.Models;
 
@@ -17,7 +14,6 @@ namespace EnConTrackingSystem.Controllers
             this._context = new ApplicationDbContext();
         }
 
-        // GET: Projects
         public ActionResult Index()
         {
             return View();
@@ -40,7 +36,22 @@ namespace EnConTrackingSystem.Controllers
 
         public ActionResult New()
         {
-            return View();
+            return View("ProjectForm");
+        }
+
+        public ActionResult Save()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ActionResult Edit()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ActionResult Delete()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

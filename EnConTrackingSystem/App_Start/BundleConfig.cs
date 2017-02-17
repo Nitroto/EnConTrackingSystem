@@ -30,7 +30,8 @@ namespace EnConTrackingSystem
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/Stylesheets/bootstrap.css",
-                "~/Content/datatables/css/datatables.bootstrap.css",
+                "~/Content/DataTables/css/dataTables.bootstrap.css",
+                "~/Content/DataTables/css/dataTables.jqueryui.css",
                 "~/Content/Stylesheets/jquery-ui/jquery-ui.css",
                 "~/Content/Stylesheets/typeahead.css",
                 "~/Content/Stylesheets/toastr.css",

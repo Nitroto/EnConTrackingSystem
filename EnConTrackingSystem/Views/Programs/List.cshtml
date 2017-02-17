@@ -16,6 +16,7 @@
             <th>Program Name</th>
             <th>Start Date</th>
             <th>End Data</th>
+            <th>Active</th>
         </tr>
     </thead>
     <tbody></tbody>
@@ -38,12 +39,41 @@
                         }
                     },
                     {
-                        data: 'startDate'
+                        data: 'startDate',
+                        className: 'dt-body-center',
+                        render: function (data, type, program) {
+                            var date = new Date(program.startDate);
+                            return date.toISOString().slice(0, 10);
+                        }
                     },
                     {
-                        data: 'endDate'
+                        data: 'endDate',
+                        className: 'dt-body-center',
+                        render: function (data, type, program) {
+                            var date = new Date(program.endDate);
+                            return date.toISOString().slice(0, 10);
+                        }
+                    },
+                    {
+                        data: 'isActive',
+                        render: function (data, type, program) {
+                            //if (program.isActive) {
+                            //    $('td').addClass('glyphicon glyphicon-ok');
+                            //} else {
+                            //    $('td').addClass('glyphicon glyphicon-remove');
+                            //}
+
+                            return data ? "<span class='glyphicon glyphicon-ok'/> Active" : "<span class='glyphicon glyphicon-remove' /> Inactive";
+                            //glyphicon glyphicon-ok
+                            //glyphicon glyphicon- remove
+                        }
                     }
                 ]
+            });
+
+            $('#programs tbody').on('click', 'tr', function () {
+                var program = table.row(this).data();
+                $(location).attr('href', '/programs/details/' + program.id);
             });
         });
     </script>
