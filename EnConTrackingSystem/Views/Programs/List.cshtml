@@ -7,16 +7,16 @@
 <h2>@EnConTrackingSystem.App_GlobalResources.Lang.Programs</h2>
 
 <p>
-    @Html.ActionLink("New program", "New", "Programs", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.BtnNewProgram, "New", "Programs", null, new { @class = "btn btn-primary" })
 </p>
 
 <table id="programs" class="table table-bordered table-hover">
     <thead>
         <tr>
-            <th>Program Name</th>
-            <th>Start Date</th>
-            <th>End Data</th>
-            <th>Active</th>
+            <th>@EnConTrackingSystem.App_GlobalResources.Lang.ProgramName</th>
+            <th>@EnConTrackingSystem.App_GlobalResources.Lang.StartDate</th>
+            <th>@EnConTrackingSystem.App_GlobalResources.Lang.EndData</th>
+            <th>@EnConTrackingSystem.App_GlobalResources.Lang.Active</th>
         </tr>
     </thead>
     <tbody></tbody>

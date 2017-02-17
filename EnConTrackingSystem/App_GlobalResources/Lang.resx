@@ -117,11 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
   <data name="AppName" xml:space="preserve">
     <value>EnCon Tracking System</value>
   </data>
+  <data name="BtnDeleteProgram" xml:space="preserve">
+    <value>Delete Program</value>
+  </data>
+  <data name="BtnDeleteProject" xml:space="preserve">
+    <value>Delete Project</value>
+  </data>
+  <data name="BtnEditProgram" xml:space="preserve">
+    <value>Edit Program</value>
+  </data>
+  <data name="BtnEditProject" xml:space="preserve">
+    <value>Edit Project</value>
+  </data>
+  <data name="BtnNewProgram" xml:space="preserve">
+    <value>New Program</value>
+  </data>
+  <data name="BtnNewProject" xml:space="preserve">
+    <value>New Project</value>
+  </data>
+  <data name="Client" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="Consultant" xml:space="preserve">
+    <value>Consultant</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
   <data name="EmergencyProjects" xml:space="preserve">
     <value>Emergency Projects</value>
+  </data>
+  <data name="EndData" xml:space="preserve">
+    <value>End Data</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log in</value>
@@ -132,13 +165,25 @@
   <data name="MenuGreeting" xml:space="preserve">
     <value>Hello</value>
   </data>
+  <data name="ProgramName" xml:space="preserve">
+    <value>Program Name</value>
+  </data>
   <data name="Programs" xml:space="preserve">
     <value>Programs</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Project Name</value>
+  </data>
+  <data name="ProjectsList" xml:space="preserve">
+    <value>Projects' List</value>
   </data>
   <data name="RecentProjects" xml:space="preserve">
     <value>Recent Projects</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start Date</value>
   </data>
 </root>

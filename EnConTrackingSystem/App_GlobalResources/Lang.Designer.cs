@@ -61,6 +61,15 @@ namespace EnConTrackingSystem.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        public static string Active {
+            get {
+                return ResourceManager.GetString("Active", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EnCon Tracking System.
         /// </summary>
         public static string AppName {
@@ -70,11 +79,101 @@ namespace EnConTrackingSystem.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Program.
+        /// </summary>
+        public static string BtnDeleteProgram {
+            get {
+                return ResourceManager.GetString("BtnDeleteProgram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Project.
+        /// </summary>
+        public static string BtnDeleteProject {
+            get {
+                return ResourceManager.GetString("BtnDeleteProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Program.
+        /// </summary>
+        public static string BtnEditProgram {
+            get {
+                return ResourceManager.GetString("BtnEditProgram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Project.
+        /// </summary>
+        public static string BtnEditProject {
+            get {
+                return ResourceManager.GetString("BtnEditProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Program.
+        /// </summary>
+        public static string BtnNewProgram {
+            get {
+                return ResourceManager.GetString("BtnNewProgram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Project.
+        /// </summary>
+        public static string BtnNewProject {
+            get {
+                return ResourceManager.GetString("BtnNewProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client.
+        /// </summary>
+        public static string Client {
+            get {
+                return ResourceManager.GetString("Client", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consultant.
+        /// </summary>
+        public static string Consultant {
+            get {
+                return ResourceManager.GetString("Consultant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Emergency Projects.
         /// </summary>
         public static string EmergencyProjects {
             get {
                 return ResourceManager.GetString("EmergencyProjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End Data.
+        /// </summary>
+        public static string EndData {
+            get {
+                return ResourceManager.GetString("EndData", resourceCulture);
             }
         }
         
@@ -106,11 +205,38 @@ namespace EnConTrackingSystem.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Program Name.
+        /// </summary>
+        public static string ProgramName {
+            get {
+                return ResourceManager.GetString("ProgramName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Programs.
         /// </summary>
         public static string Programs {
             get {
                 return ResourceManager.GetString("Programs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Name.
+        /// </summary>
+        public static string ProjectName {
+            get {
+                return ResourceManager.GetString("ProjectName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projects&apos; List.
+        /// </summary>
+        public static string ProjectsList {
+            get {
+                return ResourceManager.GetString("ProjectsList", resourceCulture);
             }
         }
         
@@ -129,6 +255,15 @@ namespace EnConTrackingSystem.App_GlobalResources {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Date.
+        /// </summary>
+        public static string StartDate {
+            get {
+                return ResourceManager.GetString("StartDate", resourceCulture);
             }
         }
     }
