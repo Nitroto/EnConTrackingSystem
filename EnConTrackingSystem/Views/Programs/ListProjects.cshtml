@@ -40,8 +40,9 @@
         $(document).ready(function () {
             var table = $('#projects').DataTable({
                 ajax: {
-                    url: '/api/projects/',
-                    dataSrc: ''
+                    processing: true,
+                    url: '/api/programs/'+@Model.Id,
+                    dataSrc: 'projects'
                 },
                 columns: [
                     {
@@ -53,13 +54,13 @@
                     {
                         data: 'client.name',
                         render: function (data, type, project) {
-                            return "<a href='/clients/details/" + project.client.id + "'>" + project.client.name + "</a>";
+                            return "<a href='/clients/details/" + project.clientId + "'>" + "Client" + "</a>";
                         }
                     },
                     {
                         data: 'consultant.name',
                         render: function (data, type, project) {
-                            return "<a href='/consultants/details/" + project.consultant.id + "'>" + project.consultant.name + "</a>";
+                            return "<a href='/consultants/details/" + project.consultantId + "'>" + "Consultant" + "</a>";
                         }
                     }
                 ]
