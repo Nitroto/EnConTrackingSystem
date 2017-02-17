@@ -6,6 +6,11 @@ namespace EnConTrackingSystem.Models
 {
     public class Program
     {
+        public Program()
+        {
+            this.Projects = new List<Project>();
+        }
+
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter program's name.")]
@@ -13,13 +18,15 @@ namespace EnConTrackingSystem.Models
         public string Name { get; set; }
 
         [Display(Name = "Start Date")]
+        [DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
 
         [Display(Name = "End Date")]
+        [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
 
         public bool IsActive { get; set; }
 
-        public IEnumerable<Project> Projects { get; set; }
+        public virtual ICollection<Project> Projects { get; set; }
     }
 }

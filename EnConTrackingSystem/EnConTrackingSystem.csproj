@@ -48,6 +48,9 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
     </Reference>
@@ -114,7 +117,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -208,23 +211,54 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\TypeaheadBundleConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\ProjectsController.cs" />
     <Compile Include="Controllers\Api\ProgramsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HtmlHelpers.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProgramsController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Dtos\ClientDto.cs" />
+    <Compile Include="Dtos\ConsultantDto.cs" />
+    <Compile Include="Dtos\ProgramDto.cs" />
+    <Compile Include="Dtos\ProjectDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201702100805515_InitialStructureOfDb.cs" />
     <Compile Include="Migrations\201702100805515_InitialStructureOfDb.Designer.cs">
       <DependentUpon>201702100805515_InitialStructureOfDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702151434019_FixDb.cs" />
+    <Compile Include="Migrations\201702151434019_FixDb.Designer.cs">
+      <DependentUpon>201702151434019_FixDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702151453126_NextFix.cs" />
+    <Compile Include="Migrations\201702151453126_NextFix.Designer.cs">
+      <DependentUpon>201702151453126_NextFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702151507185_NextBulshit.cs" />
+    <Compile Include="Migrations\201702151507185_NextBulshit.Designer.cs">
+      <DependentUpon>201702151507185_NextBulshit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702151512179_NextBulshit1.cs" />
+    <Compile Include="Migrations\201702151512179_NextBulshit1.Designer.cs">
+      <DependentUpon>201702151512179_NextBulshit1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702160914128_AddDefaultClientAndConsultant.cs" />
+    <Compile Include="Migrations\201702160914128_AddDefaultClientAndConsultant.Designer.cs">
+      <DependentUpon>201702160914128_AddDefaultClientAndConsultant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702160933597_CorrectionInDbStructure.cs" />
+    <Compile Include="Migrations\201702160933597_CorrectionInDbStructure.Designer.cs">
+      <DependentUpon>201702160933597_CorrectionInDbStructure.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -392,6 +426,47 @@
     <Content Include="Content\Stylesheets\toastr.css" />
     <Content Include="Content\Stylesheets\toastr.min.css" />
     <Content Include="Content\Stylesheets\typeahead.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\accordion.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\all.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\autocomplete.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\base.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\button.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\core.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\datepicker.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\dialog.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\draggable.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Stylesheets\jquery-ui\jquery-ui.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\menu.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\progressbar.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\resizable.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\selectable.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\selectmenu.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\slider.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\sortable.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\spinner.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\tabs.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\theme.css" />
+    <Content Include="Content\Stylesheets\jquery-ui\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -422,6 +497,24 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Content\Stylesheets\toastr.scss" />
     <Content Include="Content\Stylesheets\toastr.less" />
+    <EmbeddedResource Include="Migrations\201702151434019_FixDb.resx">
+      <DependentUpon>201702151434019_FixDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702151453126_NextFix.resx">
+      <DependentUpon>201702151453126_NextFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702151507185_NextBulshit.resx">
+      <DependentUpon>201702151507185_NextBulshit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702151512179_NextBulshit1.resx">
+      <DependentUpon>201702151512179_NextBulshit1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702160914128_AddDefaultClientAndConsultant.resx">
+      <DependentUpon>201702160914128_AddDefaultClientAndConsultant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702160933597_CorrectionInDbStructure.resx">
+      <DependentUpon>201702160933597_CorrectionInDbStructure.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
@@ -508,6 +601,8 @@
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -560,6 +655,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Language\Dropdown.cshtml" />
     <Content Include="Views\Programs\List.cshtml" />
+    <Content Include="Views\Programs\ProgramForm.cshtml" />
+    <Content Include="Views\Programs\ListProjects.cshtml" />
+    <Content Include="Views\Projects\New.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

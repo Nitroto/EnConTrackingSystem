@@ -1,0 +1,56 @@
+﻿@model EnConTrackingSystem.Models.Program
+@{
+    ViewBag.Title = "List Projects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+<p>
+    @Html.ActionLink("New project", "New", "Projects", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="projects" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Project Name</th>
+            <th>Client</th>
+            <th>Consultant</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $('#projects').DataTable({
+                ajax: {
+                    url: '/api/projects/',
+                    dataSrc: ''
+                },
+                columns: [
+                    {
+                        data: 'name',
+                        render: function (data, type, project) {
+                            return "<a href='/projects/details/" + project.id + "'>" + project.name + "</a>";
+                        }
+                    },
+                    {
+                        data: 'client.name',
+                        render: function (data, type, project) {
+                            return "<a href='/clients/details/" + project.client.id + "'>" + project.client.name + "</a>";
+                        }
+                    },
+                    {
+                        data: 'consultant.name',
+                        render: function (data, type, project) {
+                            return "<a href='/consultants/details/" + project.consultant.id + "'>" + project.consultant.name + "</a>";
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}

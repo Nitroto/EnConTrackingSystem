@@ -12,6 +12,7 @@ namespace EnConTrackingSystem
                 "~/Scripts/bootbox.js",
                 "~/Scripts/datatables/jquery.datatables.js",
                 "~/Scripts/datatables/datatables.bootstrap.js",
+                "~/Scripts/jquery-ui-1.12.1.js",
                 "~/Scripts/typeahead.bundle.js",
                 "~/Scripts/toastr.js"));
 
@@ -30,6 +31,7 @@ namespace EnConTrackingSystem
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/Stylesheets/bootstrap.css",
                 "~/Content/datatables/css/datatables.bootstrap.css",
+                "~/Content/Stylesheets/jquery-ui/jquery-ui.css",
                 "~/Content/Stylesheets/typeahead.css",
                 "~/Content/Stylesheets/toastr.css",
                 "~/Content/Stylesheets/site.css"));

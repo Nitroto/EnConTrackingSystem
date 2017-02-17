@@ -5,7 +5,11 @@ namespace EnConTrackingSystem.Models
 {
     public class Client
     {
-        public string Id { get; set; }
+        public Client()
+        {
+            this.Projects = new List<Project>();
+        }
+        public int Id { get; set; }
 
         [StringLength(255)]
         [Required]
@@ -13,11 +17,13 @@ namespace EnConTrackingSystem.Models
         public string Name { get; set; }
 
         [Display(Name = "Client Phone")]
+        [StringLength(20)]
         public string Phone { get; set; }
 
         [Display(Name = "Client Email")]
+        [StringLength(30)]
         public string Email { get; set; }
 
-        public IEnumerable<Project> Projects { get; set; }
+        public ICollection<Project> Projects { get; set; }
     }
 }

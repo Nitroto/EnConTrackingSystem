@@ -1,0 +1,44 @@
+﻿@model EnConTrackingSystem.Models.Program
+@{
+    ViewBag.Title = "ProgrmForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProgrmForm</h2>
+
+@using (Html.BeginForm("Save", "Programs"))
+{
+    <div class="form-group">
+        @Html.LabelFor(p => p.Name)
+        @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.StartDate)
+        @Html.TextBoxFor(p => p.StartDate, new { @class = "form-control datepicker" })
+        @Html.ValidationMessageFor(p => p.StartDate)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.EndDate)
+        @Html.TextBoxFor(p => p.EndDate, new { @class = "form-control datepicker" })
+        @Html.ValidationMessageFor(p=> p.EndDate)
+    </div>
+
+    @Html.HiddenFor(p => p.Id)
+    @Html.AntiForgeryToken()
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(function() {
+            $('.datepicker').datepicker({ dateFormat: "dd-MM-yy"});
+        });
+    </script>
+}

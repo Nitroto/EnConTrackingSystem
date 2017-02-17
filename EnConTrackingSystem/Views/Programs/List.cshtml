@@ -32,17 +32,16 @@
                 },
                 columns: [
                     {
-                        data: 'Name',
+                        data: 'name',
                         render: function (data, type, program) {
-                            console.log(program);
-                            return "<a href='/programs/edit/" + program.id + "'>" + program.Name + "</a>";
+                            return "<a href='/programs/details/" + program.id + "'>" + program.name + "</a>";
                         }
                     },
                     {
-                        data: 'StartDate'
+                        data: 'startDate'
                     },
                     {
-                        data: 'EndDate'
+                        data: 'endDate'
                     }
                 ]
             });

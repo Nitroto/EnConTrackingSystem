@@ -17,10 +17,13 @@ namespace EnConTrackingSystem.Models
         [Display(Name = "Info")]
         public string ProjectInfo { get; set; }
 
+        public int ProgramId { get; set; }
         public Program Program { get; set; }
 
+        public int ClientId { get; set; }
         public Client Client { get; set; }
 
+        public int ConsultantId { get; set; }
         public Consultant Consultant { get; set; }
     }
 }
