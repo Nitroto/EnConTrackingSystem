@@ -27,6 +27,6 @@ namespace EnConTrackingSystem.Models
 
         public bool IsActive { get; set; }
 
-        public virtual ICollection<Project> Projects { get; set; }
+        public ICollection<Project> Projects { get; set; }
     }
 }

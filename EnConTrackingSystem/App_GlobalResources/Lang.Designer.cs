@@ -266,5 +266,23 @@ namespace EnConTrackingSystem.App_GlobalResources {
                 return ResourceManager.GetString("StartDate", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Program.
+        /// </summary>
+        public static string TitleProgramFormEdit {
+            get {
+                return ResourceManager.GetString("TitleProgramFormEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Program.
+        /// </summary>
+        public static string TitleProgramFormNew {
+            get {
+                return ResourceManager.GetString("TitleProgramFormNew", resourceCulture);
+            }
+        }
     }
 }

@@ -186,4 +186,10 @@
   <data name="StartDate" xml:space="preserve">
     <value>Start Date</value>
   </data>
+  <data name="TitleProgramFormEdit" xml:space="preserve">
+    <value>Edit Program</value>
+  </data>
+  <data name="TitleProgramFormNew" xml:space="preserve">
+    <value>New Program</value>
+  </data>
 </root>

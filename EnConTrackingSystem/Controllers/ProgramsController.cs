@@ -1,8 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Net;
 using EnConTrackingSystem.Models;
+using EnConTrackingSystem.ViewModels;
 
 namespace EnConTrackingSystem.Controllers
 {
@@ -21,9 +22,11 @@ namespace EnConTrackingSystem.Controllers
             return View("List");
         }
 
+        //[Authorize(Roles = RoleName.CanManagePrograms)]
         public ViewResult New()
         {
-            return View("ProgramForm");
+            var viewModel = new ProgramFormViewModel();
+            return View("ProgramForm", viewModel);
         }
 
         [HttpPost]
@@ -32,7 +35,9 @@ namespace EnConTrackingSystem.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // TODO
+                var viewModel = new ProgramFormViewModel(program);
+
+                return View("ProgramForm", viewModel);
             }
 
             if (program.Id == 0)
@@ -69,14 +74,47 @@ namespace EnConTrackingSystem.Controllers
             this._context.Dispose();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            throw new NotImplementedException();
+            var program = this._context.Programs.Include(p => p.Projects).SingleOrDefault(p => p.Id == id);
+            if (program == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new ProgramFormViewModel(program);
+
+            return View("ProgramForm", viewModel);
         }
 
-        public ActionResult Delete()
+        // GET: /Program/Delete/{id}
+        public ActionResult Delete(int? id)
         {
-            throw new NotImplementedException();
+            if (id == null)
+            {
+                return  new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var program = this._context.Programs.Find(id);
+
+            if (program == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(program);
+        }
+
+        // POST: /Program/Delete/{id}
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var program = this._context.Programs.Find(id);
+            this._context.Programs.Remove(program);
+            this._context.SaveChanges();
+
+            return RedirectToAction("Index", "Programs");
         }
     }
 }
