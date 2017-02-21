@@ -32,25 +32,17 @@ namespace EnConTrackingSystem.ViewModels
         public string Name { get; set; }
 
         [Display(Name = "Start Date")]
-        [DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
 
         [Display(Name = "End Date")]
-        [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
 
         public bool IsActive { get; set; }
 
         public ICollection<Project> Projects { get; set; }
 
-        public string Title
-        {
-            get
-            {
-                return Id != 0
-                    ? App_GlobalResources.Lang.TitleProgramFormEdit
-                    : App_GlobalResources.Lang.TitleProgramFormNew;
-            }
-        }
+        public string Title => Id != 0
+            ? App_GlobalResources.Lang.TitleProgramFormEdit
+            : App_GlobalResources.Lang.TitleProgramFormNew;
     }
 }

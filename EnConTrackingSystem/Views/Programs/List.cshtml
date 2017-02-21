@@ -42,16 +42,14 @@
                         data: 'startDate',
                         className: 'dt-body-center',
                         render: function (data, type, program) {
-                            var date = new Date(program.startDate);
-                            return date.toISOString().slice(0, 10);
+                            return data != null ? data.slice(0, 10) : "-";
                         }
                     },
                     {
                         data: 'endDate',
                         className: 'dt-body-center',
                         render: function (data, type, program) {
-                            var date = new Date(program.endDate);
-                            return date.toISOString().slice(0, 10);
+                            return data != null ? data.slice(0, 10) : "-";
                         }
                     },
                     {

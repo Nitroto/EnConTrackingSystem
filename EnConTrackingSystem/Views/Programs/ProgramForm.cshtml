@@ -1,4 +1,5 @@
-﻿@model EnConTrackingSystem.ViewModels.ProgramFormViewModel
+﻿@using System.Web.Mvc.Html
+@model EnConTrackingSystem.ViewModels.ProgramFormViewModel
 @{
     ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,14 +17,14 @@
 
     <div class="form-group">
         @Html.LabelFor(p => p.StartDate)
-        @Html.TextBoxFor(p => p.StartDate, new { @class = "form-control datepicker" })
+        @Html.TextBoxFor(p => p.StartDate, Model.StartDate?.ToString("dd-MMM-yyy") ?? "", new { @class = "form-control datepicker" })
         @Html.ValidationMessageFor(p => p.StartDate)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(p => p.EndDate)
-        @Html.TextBoxFor(p => p.EndDate, new { @class = "form-control datepicker" })
-        @Html.ValidationMessageFor(p=> p.EndDate)
+        @Html.TextBoxFor(p => p.EndDate, Model.EndDate?.ToString("dd-MMMM-yyy") ?? "", new { @class = "form-control datepicker" })
+        @Html.ValidationMessageFor(p => p.EndDate)
     </div>
 
     @Html.HiddenFor(p => p.Id)
@@ -37,8 +38,8 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        $(function() {
-            $('.datepicker').datepicker({ dateFormat: "dd-MM-yy"});
+        $(function () {
+            $('.datepicker').datepicker({ dateFormat: "dd-MM-yy" });
         });
     </script>
 }

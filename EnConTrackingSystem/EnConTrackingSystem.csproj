@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201702160933597_CorrectionInDbStructure.Designer.cs">
       <DependentUpon>201702160933597_CorrectionInDbStructure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702211345443_IsActiveBackgroundLogic.cs" />
+    <Compile Include="Migrations\201702211345443_IsActiveBackgroundLogic.Designer.cs">
+      <DependentUpon>201702211345443_IsActiveBackgroundLogic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -516,6 +520,9 @@
     <EmbeddedResource Include="Migrations\201702160933597_CorrectionInDbStructure.resx">
       <DependentUpon>201702160933597_CorrectionInDbStructure.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702211345443_IsActiveBackgroundLogic.resx">
+      <DependentUpon>201702211345443_IsActiveBackgroundLogic.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />
@@ -660,6 +667,7 @@
     <Content Include="Views\Programs\ListProjects.cshtml" />
     <Content Include="Views\Projects\ProjectForm.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Programs\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
