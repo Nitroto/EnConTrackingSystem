@@ -1,8 +1,33 @@
-﻿
+﻿@model EnConTrackingSystem.Models.Program
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete " + Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>@EnConTrackingSystem.App_GlobalResources.Lang.DeleteConfirmation @Model.Name?</h2>
 
+<ul class="list-unstyled">
+    <li>Projects under this program: @Model.Projects.Count</li>
+    @if (Model.Projects.Count != 0)
+    {
+        <li>All projects will be moved to the "No Program".</li>
+    }
+
+</ul>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(p => p.Id)
+    @Html.AntiForgeryToken()
+
+    <p>
+        <div class="btn-toolbar">
+            <div class="btn-group">
+                <input type="submit" value=@EnConTrackingSystem.App_GlobalResources.Lang.Yes class="btn btn-danger"/>
+            </div>
+            <div class="btn-group">
+                @Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.No, "Details", "Programs", new {id = @Model.Id}, new {@class = "btn btn-info"})
+            </div>
+        </div>
+    </p>
+}

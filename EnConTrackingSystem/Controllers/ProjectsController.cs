@@ -53,5 +53,10 @@ namespace EnConTrackingSystem.Controllers
         {
             throw new System.NotImplementedException();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            this._context.Dispose();
+        }
     }
 }

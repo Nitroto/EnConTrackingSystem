@@ -151,6 +151,15 @@ namespace EnConTrackingSystem.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete .
+        /// </summary>
+        public static string DeleteConfirmation {
+            get {
+                return ResourceManager.GetString("DeleteConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -201,6 +210,15 @@ namespace EnConTrackingSystem.App_GlobalResources {
         public static string MenuGreeting {
             get {
                 return ResourceManager.GetString("MenuGreeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -282,6 +300,15 @@ namespace EnConTrackingSystem.App_GlobalResources {
         public static string TitleProgramFormNew {
             get {
                 return ResourceManager.GetString("TitleProgramFormNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

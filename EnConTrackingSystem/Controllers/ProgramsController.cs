@@ -69,11 +69,7 @@ namespace EnConTrackingSystem.Controllers
             return View("ListProjects", program);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            this._context.Dispose();
-        }
-
+        // PUT: /Program/Edit/{id}
         public ActionResult Edit(int id)
         {
             var program = this._context.Programs.Include(p => p.Projects).SingleOrDefault(p => p.Id == id);
@@ -92,10 +88,10 @@ namespace EnConTrackingSystem.Controllers
         {
             if (id == null)
             {
-                return  new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var program = this._context.Programs.Find(id);
+            var program = this._context.Programs.Include(p => p.Projects).FirstOrDefault(p => p.Id == id);
 
             if (program == null)
             {
@@ -110,11 +106,27 @@ namespace EnConTrackingSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var program = this._context.Programs.Find(id);
+            var program = this._context.Programs.Include(p => p.Projects).FirstOrDefault(p => p.Id == id);
+
+            if (program == null)
+            {
+                return HttpNotFound();
+            }
+
+            foreach (var project in program.Projects)
+            {
+                project.ProgramId = Program.DefaultProgramId;
+            }
+
             this._context.Programs.Remove(program);
             this._context.SaveChanges();
 
             return RedirectToAction("Index", "Programs");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            this._context.Dispose();
         }
     }
 }

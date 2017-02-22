@@ -147,6 +147,9 @@
   <data name="Consultant" xml:space="preserve">
     <value>Consultant</value>
   </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete </value>
+  </data>
   <data name="Details" xml:space="preserve">
     <value>Details</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="MenuGreeting" xml:space="preserve">
     <value>Hello</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
   </data>
   <data name="ProgramName" xml:space="preserve">
     <value>Program Name</value>
@@ -191,5 +197,8 @@
   </data>
   <data name="TitleProgramFormNew" xml:space="preserve">
     <value>New Program</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

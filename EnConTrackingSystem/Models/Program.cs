@@ -7,6 +7,7 @@ namespace EnConTrackingSystem.Models
 {
     public class Program
     {
+        public static int DefaultProgramId = 1;
         public Program()
         {
             this.Projects = new List<Project>();

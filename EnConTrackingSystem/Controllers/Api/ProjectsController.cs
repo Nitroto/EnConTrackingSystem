@@ -20,7 +20,7 @@ namespace EnConTrackingSystem.Controllers.Api
         //GET /api/projects
         public IHttpActionResult GetProjects(string query = null)
         {
-            var projectsQuery = this._context.Projects.Include(p => p.Client).Include(p=>p.Consultant);
+            var projectsQuery = this._context.Projects.Include(p => p.Client).Include(p => p.Consultant);
 
             if (!String.IsNullOrWhiteSpace(query))
             {
@@ -45,6 +45,11 @@ namespace EnConTrackingSystem.Controllers.Api
             var projectDto = Mapper.Map<Project, ProjectDto>(project);
 
             return Ok(projectDto);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            this._context.Dispose();
         }
     }
 }
