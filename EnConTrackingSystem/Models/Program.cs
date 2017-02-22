@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using EnConTrackingSystem.Migrations;
 
 namespace EnConTrackingSystem.Models
 {
@@ -31,25 +30,37 @@ namespace EnConTrackingSystem.Models
         {
             get
             {
-                if (this.StartDate == null && this.EndDate == null)
+                var endDate = this.EndDate;
+                var startDate = this.StartDate;
+
+                if (startDate == null && endDate == null)
                 {
                     return false;
                 }
 
                 var today = DateTime.Now;
 
-                if (this.StartDate != null && this.EndDate == null)
+
+                if (startDate != null && endDate == null)
                 {
-                    return DateTime.Compare((DateTime)this.StartDate, today) <= 0 ? true : false;
+                    return DateTime.Compare((DateTime)startDate, today) <= 0 ? true : false;
                 }
 
-                if (this.EndDate != null && this.StartDate == null)
+                //START FIX: Problem with IsActive when end date is today
+                if (endDate.Value.TimeOfDay == new DateTime().TimeOfDay)
                 {
-                    return DateTime.Compare((DateTime)this.EndDate, today) >= 0 ? true : false;
+                    endDate = endDate.Value.AddHours(23).AddMinutes(59).AddSeconds(59);
+                }
+                // END FIX
+
+                if (startDate == null)
+                {
+                    return DateTime.Compare((DateTime)endDate, today) >= 0 ? true : false;
                 }
 
-                return DateTime.Compare((DateTime)this.EndDate, today) >= 0 &&
-                       DateTime.Compare((DateTime)this.StartDate, today) <= 0;
+
+                return DateTime.Compare((DateTime)endDate, today) >= 0 &&
+                       DateTime.Compare((DateTime)startDate, today) <= 0;
             }
         }
 
