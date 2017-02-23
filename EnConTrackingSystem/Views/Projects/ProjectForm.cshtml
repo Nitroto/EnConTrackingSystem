@@ -14,17 +14,22 @@
         @Html.ValidationMessageFor(p => p.Name)
     </div>
 
-    @*<div class="form-group">
-        @Html.LabelFor(p => p.StartDate)
-        @Html.TextBoxFor(p => p.StartDate, new { @class = "form-control datepicker" })
-        @Html.ValidationMessageFor(p => p.StartDate)
+    <div class="form-group">
+        @Html.LabelFor(p => p.ProjectInvestment)
+        @Html.TextBoxFor(p => p.ProjectInvestment, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.ProjectInvestment)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(p => p.EndDate)
-        @Html.TextBoxFor(p => p.EndDate, new { @class = "form-control datepicker" })
-        @Html.ValidationMessageFor(p => p.EndDate)
-    </div>*@
+        @Html.LabelFor(p => p.ProjectPrice)
+        @Html.TextBoxFor(p => p.ProjectPrice, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.ProjectPrice)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.ProjectInfo)
+        @Html.TextAreaFor(p => p.ProjectInfo, new { @class = "form-control" })
+    </div>
 
     @Html.HiddenFor(p => p.Id)
     @Html.AntiForgeryToken()
@@ -35,10 +40,4 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
-
-    <script>
-        $(function() {
-            $('.datepicker').datepicker({ dateFormat: "dd-MM-yy"});
-        });
-    </script>
 }

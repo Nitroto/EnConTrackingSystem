@@ -264,6 +264,14 @@
     <Compile Include="Migrations\201702211345443_IsActiveBackgroundLogic.Designer.cs">
       <DependentUpon>201702211345443_IsActiveBackgroundLogic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.cs" />
+    <Compile Include="Migrations\201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.Designer.cs">
+      <DependentUpon>201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702231519388_ValidationMessageForProjectPriceAndInvestment.cs" />
+    <Compile Include="Migrations\201702231519388_ValidationMessageForProjectPriceAndInvestment.Designer.cs">
+      <DependentUpon>201702231519388_ValidationMessageForProjectPriceAndInvestment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -596,6 +604,12 @@
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\bootstrap\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap\bootstrap-datetimepicker-build.less" />
+    <EmbeddedResource Include="Migrations\201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.resx">
+      <DependentUpon>201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702231519388_ValidationMessageForProjectPriceAndInvestment.resx">
+      <DependentUpon>201702231519388_ValidationMessageForProjectPriceAndInvestment.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bloodhound.js" />
     <Content Include="Scripts\bloodhound.min.js" />

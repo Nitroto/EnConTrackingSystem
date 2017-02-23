@@ -10,8 +10,10 @@ namespace EnConTrackingSystem.Dtos
         [StringLength(255)]
         public string Name { get; set; }
 
-        public decimal? ProjectCost { get; set; }
+        [RegularExpression(@"^\d*[\.|,]?\d*$", ErrorMessage = "Please enter valid investment")]
+        public decimal? ProjectInvestment { get; set; }
 
+        [RegularExpression(@"^\d*[\.|,]?\d*$", ErrorMessage = "Please enter valid price")]
         public decimal? ProjectPrice { get; set; }
 
         public string ProjectInfo { get; set; }

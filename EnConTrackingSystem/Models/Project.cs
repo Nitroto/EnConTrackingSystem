@@ -10,8 +10,12 @@ namespace EnConTrackingSystem.Models
         [StringLength(255)]
         public string Name { get; set; }
 
-        public decimal? ProjectCost { get; set; }
+        [RegularExpression(@"^\d*[\.|,]?\d*$", ErrorMessage = "Please enter valid investment")]
+        [Display(Name = "Investment")]
+        public decimal? ProjectInvestment { get; set; }
 
+        [RegularExpression(@"^\d*[\.|,]?\d*$", ErrorMessage = "Please enter valid price")]
+        [Display(Name = "Price")]
         public decimal? ProjectPrice { get; set; }
 
         [Display(Name = "Info")]
