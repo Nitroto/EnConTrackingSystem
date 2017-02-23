@@ -198,6 +198,12 @@
   <data name="TitleProgramFormNew" xml:space="preserve">
     <value>New Program</value>
   </data>
+  <data name="TitleProjectFormEdit" xml:space="preserve">
+    <value>Edit Project</value>
+  </data>
+  <data name="TitleProjectFormNew" xml:space="preserve">
+    <value>New Project</value>
+  </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
   </data>

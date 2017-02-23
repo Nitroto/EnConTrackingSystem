@@ -14,6 +14,7 @@ namespace EnConTrackingSystem
                 "~/Scripts/datatables/datatables.bootstrap.js",
                 "~/Scripts/jquery-ui-1.12.1.js",
                 "~/Scripts/typeahead.bundle.js",
+                "~/Scripts/moment-with-locales.js",
                 "~/Scripts/toastr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

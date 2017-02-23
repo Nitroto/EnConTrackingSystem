@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using EnConTrackingSystem.Models;
+using EnConTrackingSystem.ViewModels;
 
 namespace EnConTrackingSystem.Controllers
 {
@@ -34,22 +35,62 @@ namespace EnConTrackingSystem.Controllers
             return View(project);
         }
 
-        public ActionResult New()
+        public ActionResult New(int programId)
         {
-            return View("ProjectForm");
+            var viewModel = new ProjectFormViewModel(programId);
+            return View("ProjectForm", viewModel);
         }
 
-        public ActionResult Save()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(Project project)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                var viewModel = new ProjectFormViewModel(project);
+
+                return View("ProjectForm", viewModel);
+            }
+
+            if (project.Id == 0)
+            {
+                this._context.Projects.Add(project);
+            }
+            else
+            {
+                var projectInDb = this._context.Projects.Single(p => p.Id == project.Id);
+
+                projectInDb.Name = project.Name;
+                projectInDb.ProjectInvestment = project.ProjectInvestment;
+                projectInDb.ProjectPrice = project.ProjectPrice;
+                projectInDb.ProjectInfo = project.ProjectInfo;
+            }
+            this._context.SaveChanges();
+
+            return RedirectToAction("Details", "Programs", new { id = project.ProgramId });
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var project = this._context.Projects.SingleOrDefault(p => p.Id == id);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            var viewModel = new ProjectFormViewModel(project);
+
+            return View("ProjectForm", viewModel);
+        }
+
+        public ActionResult Delete(int? id)
         {
             throw new System.NotImplementedException();
         }
 
-        public ActionResult Edit()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ActionResult Delete()
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
             throw new System.NotImplementedException();
         }

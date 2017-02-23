@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using EnConTrackingSystem.Models;
 using System.ComponentModel.DataAnnotations;
 
@@ -41,7 +39,7 @@ namespace EnConTrackingSystem.ViewModels
 
         public ICollection<Project> Projects { get; set; }
 
-        public string Title => Id != 0
+        public string Title => this.Id != 0
             ? App_GlobalResources.Lang.TitleProgramFormEdit
             : App_GlobalResources.Lang.TitleProgramFormNew;
     }

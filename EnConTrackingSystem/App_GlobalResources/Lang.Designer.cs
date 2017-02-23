@@ -304,6 +304,24 @@ namespace EnConTrackingSystem.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Project.
+        /// </summary>
+        public static string TitleProjectFormEdit {
+            get {
+                return ResourceManager.GetString("TitleProjectFormEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Project.
+        /// </summary>
+        public static string TitleProjectFormNew {
+            get {
+                return ResourceManager.GetString("TitleProjectFormNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         public static string Yes {

@@ -30,7 +30,7 @@
 </table>
 
 <p>
-    @Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.BtnNewProject, "New", "Projects", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.BtnNewProject, "New", "Projects", new { programId = Model.Id }, new { @class = "btn btn-primary" })
 </p>
 
 
