@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
 namespace EnConTrackingSystem.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IEnumerable<object>
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<Consultant> Consultants { get; set; }
@@ -19,6 +20,11 @@ namespace EnConTrackingSystem.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        public IEnumerator<object> GetEnumerator()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

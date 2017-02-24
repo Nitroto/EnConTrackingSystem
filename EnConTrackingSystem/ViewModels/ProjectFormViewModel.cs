@@ -1,16 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using EnConTrackingSystem.Models;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace EnConTrackingSystem.ViewModels
 {
     public class ProjectFormViewModel
     {
+        private ApplicationDbContext _context;
+
         public ProjectFormViewModel(int programId)
         {
             this.Id = 0;
             this.ClientId = Defaults.ClientId;
             this.ConsultantId = Defaults.ConsultantId;
             this.ProgramId = programId;
+            this._context = new ApplicationDbContext();
         }
 
         public ProjectFormViewModel(Project project)
@@ -23,6 +30,7 @@ namespace EnConTrackingSystem.ViewModels
             this.ProgramId = project.ProgramId;
             this.ClientId = project.ClientId;
             this.ConsultantId = project.ConsultantId;
+            this._context = new ApplicationDbContext();
         }
 
         public int Id { get; set; }
@@ -54,5 +62,43 @@ namespace EnConTrackingSystem.ViewModels
         public string Title => this.Id != 0
             ? App_GlobalResources.Lang.TitleProjectFormEdit
             : App_GlobalResources.Lang.TitleProjectFormNew;
+
+        private List<Autocomplete> _GetClients(string query)
+        {
+            var clients = new List<Autocomplete>();
+
+            try
+            {
+                var results =
+                    this._context.Clients.Where(c => (c.Name).Contains(query)).OrderBy(c => c.Name).Take(10)
+                        .ToList();
+                foreach (var r in results)
+                {
+                    Autocomplete client = new Autocomplete();
+
+                    client.Name = r.Name;
+                    client.Id = r.Id;
+
+                    clients.Add(client);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+
+            return clients;
+        }
+
+        public JsonResult GetClients(string query)
+        {
+            return NotImplementedException;
+            //return Json(this._GetClients(query),JsonRequestBehavior.AllowGet);
+        }
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    this._context.Dispose();
+        //}
     }
 }

@@ -35,7 +35,8 @@
     <div class="form-group">
         @Html.LabelFor(p => p.ClientId)
         <div class="form-inline">
-            @Html.TextBoxFor(p => p.ClientId, new { @class = "form-control" })
+            @Html.HiddenFor(p => p.ClientId)
+            @Html.TextBoxFor(p => p.ClientId, new {@class = "form-control"})
             <a href="@Url.Action("New", "Consultants")" class="btn btn-primary disabled">
                 <span class='glyphicon glyphicon-plus'></span>
             </a>
