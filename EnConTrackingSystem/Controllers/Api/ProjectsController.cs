@@ -47,6 +47,62 @@ namespace EnConTrackingSystem.Controllers.Api
             return Ok(projectDto);
         }
 
+        //POST /api/projects
+        [HttpPost]
+        public IHttpActionResult CreateProject(ProjectDto projectDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var project = Mapper.Map<ProjectDto, Project>(projectDto);
+            this._context.Projects.Add(project);
+            this._context.SaveChanges();
+            projectDto.Id = project.Id;
+
+            return Created(new Uri(Request.RequestUri + "/" + project.Id), projectDto);
+        }
+
+        //PUT /api/projects/{id}
+        [HttpPut]
+        public IHttpActionResult UpdateProject(int id, ProjectDto project)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var projectInDb = this._context.Projects.SingleOrDefault(p => p.Id == id);
+
+            if (projectInDb == null)
+            {
+                return NotFound();
+            }
+
+            Mapper.Map(project, projectInDb);
+
+            this._context.SaveChanges();
+
+            return Ok();
+        }
+
+        //DELETE /api/projects/{id}
+        [HttpDelete]
+        public IHttpActionResult DeleteProject(int id)
+        {
+            var projectInDb = this._context.Projects.SingleOrDefault(p => p.Id == id);
+
+            if (projectInDb == null)
+            {
+                return NotFound();
+            }
+
+            this._context.Projects.Remove(projectInDb);
+            this._context.SaveChanges();
+            return Ok();
+        }
+
         protected override void Dispose(bool disposing)
         {
             this._context.Dispose();

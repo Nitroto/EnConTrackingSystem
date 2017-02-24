@@ -101,7 +101,7 @@ namespace EnConTrackingSystem.Controllers.Api
             //Move all project to default program (Regular Audits)
             foreach (var project in programInDb.Projects)
             {
-                project.ProgramId = Program.DefaultProgramId;
+                project.ProgramId = Defaults.ProgramId;
             }
 
             this._context.Programs.Remove(programInDb);

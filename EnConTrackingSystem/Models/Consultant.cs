@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EnConTrackingSystem.Models
 {
@@ -9,6 +10,8 @@ namespace EnConTrackingSystem.Models
         {
             this.Projects = new List<Project>();
         }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [StringLength(255)]

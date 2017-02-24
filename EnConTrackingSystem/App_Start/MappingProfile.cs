@@ -15,8 +15,10 @@ namespace EnConTrackingSystem
             CreateMap<Consultant, ConsultantDto>().PreserveReferences();
 
             //Dto to Domain
-            CreateMap<ProjectDto, Project>().ForMember(c => c.Id, opt => opt.Ignore()).PreserveReferences();
-            CreateMap<ProgramDto, Program>().ForMember(m => m.Id, opt => opt.Ignore()).PreserveReferences();
+            CreateMap<ProjectDto, Project>().ForMember(p => p.Id, opt => opt.Ignore()).PreserveReferences();
+            CreateMap<ProgramDto, Program>().ForMember(p => p.Id, opt => opt.Ignore()).PreserveReferences();
+            CreateMap<ClientDto, Client>().ForMember(c => c.Id, opt => opt.Ignore()).PreserveReferences();
+            CreateMap<ConsultantDto, Consultant>().ForMember(c => c.Id, opt => opt.Ignore()).PreserveReferences();
         }
     }
 }

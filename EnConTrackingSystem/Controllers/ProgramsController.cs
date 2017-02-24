@@ -115,7 +115,7 @@ namespace EnConTrackingSystem.Controllers
 
             foreach (var project in program.Projects)
             {
-                project.ProgramId = Program.DefaultProgramId;
+                project.ProgramId = Defaults.ProgramId;
             }
 
             this._context.Programs.Remove(program);

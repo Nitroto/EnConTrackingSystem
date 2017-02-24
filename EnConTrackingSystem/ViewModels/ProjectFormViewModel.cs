@@ -8,6 +8,8 @@ namespace EnConTrackingSystem.ViewModels
         public ProjectFormViewModel(int programId)
         {
             this.Id = 0;
+            this.ClientId = Defaults.ClientId;
+            this.ConsultantId = Defaults.ConsultantId;
             this.ProgramId = programId;
         }
 
@@ -40,10 +42,13 @@ namespace EnConTrackingSystem.ViewModels
         [Display(Name = "Info")]
         public string ProjectInfo { get; set; }
 
+        [Display(Name = "Program")]
         public int ProgramId { get; set; }
 
+        [Display(Name = "Client")]
         public int ClientId { get; set; }
 
+        [Display(Name = "Consultant")]
         public int ConsultantId { get; set; }
 
         public string Title => this.Id != 0

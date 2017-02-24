@@ -217,6 +217,8 @@
     <Compile Include="App_Start\TypeaheadBundleConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\ConsultantsController.cs" />
+    <Compile Include="Controllers\Api\ClientsController.cs" />
     <Compile Include="Controllers\Api\ProjectsController.cs" />
     <Compile Include="Controllers\Api\ProgramsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -232,45 +234,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702100805515_InitialStructureOfDb.cs" />
-    <Compile Include="Migrations\201702100805515_InitialStructureOfDb.Designer.cs">
-      <DependentUpon>201702100805515_InitialStructureOfDb.cs</DependentUpon>
+    <Compile Include="Migrations\201702241359118_Initial.cs" />
+    <Compile Include="Migrations\201702241359118_Initial.Designer.cs">
+      <DependentUpon>201702241359118_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702151434019_FixDb.cs" />
-    <Compile Include="Migrations\201702151434019_FixDb.Designer.cs">
-      <DependentUpon>201702151434019_FixDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702151453126_NextFix.cs" />
-    <Compile Include="Migrations\201702151453126_NextFix.Designer.cs">
-      <DependentUpon>201702151453126_NextFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702151507185_NextBulshit.cs" />
-    <Compile Include="Migrations\201702151507185_NextBulshit.Designer.cs">
-      <DependentUpon>201702151507185_NextBulshit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702151512179_NextBulshit1.cs" />
-    <Compile Include="Migrations\201702151512179_NextBulshit1.Designer.cs">
-      <DependentUpon>201702151512179_NextBulshit1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702160914128_AddDefaultClientAndConsultant.cs" />
-    <Compile Include="Migrations\201702160914128_AddDefaultClientAndConsultant.Designer.cs">
-      <DependentUpon>201702160914128_AddDefaultClientAndConsultant.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702160933597_CorrectionInDbStructure.cs" />
-    <Compile Include="Migrations\201702160933597_CorrectionInDbStructure.Designer.cs">
-      <DependentUpon>201702160933597_CorrectionInDbStructure.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702211345443_IsActiveBackgroundLogic.cs" />
-    <Compile Include="Migrations\201702211345443_IsActiveBackgroundLogic.Designer.cs">
-      <DependentUpon>201702211345443_IsActiveBackgroundLogic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.cs" />
-    <Compile Include="Migrations\201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.Designer.cs">
-      <DependentUpon>201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201702231519388_ValidationMessageForProjectPriceAndInvestment.cs" />
-    <Compile Include="Migrations\201702231519388_ValidationMessageForProjectPriceAndInvestment.Designer.cs">
-      <DependentUpon>201702231519388_ValidationMessageForProjectPriceAndInvestment.cs</DependentUpon>
+    <Compile Include="Migrations\201702241401441_AddDefaultProgramClientConsultant.cs" />
+    <Compile Include="Migrations\201702241401441_AddDefaultProgramClientConsultant.Designer.cs">
+      <DependentUpon>201702241401441_AddDefaultProgramClientConsultant.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -278,6 +248,7 @@
     <Compile Include="Models\Autocomplete.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Consultant.cs" />
+    <Compile Include="Models\Defaults.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Program.cs" />
@@ -433,6 +404,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Stylesheets\bootstrap-theme.css" />
     <Content Include="Content\Stylesheets\bootstrap-theme.min.css" />
     <Content Include="Content\Stylesheets\bootstrap.css" />
@@ -482,16 +454,11 @@
     <Content Include="Content\Stylesheets\jquery-ui\theme.css" />
     <Content Include="Content\Stylesheets\jquery-ui\tooltip.css" />
     <Content Include="favicon.ico" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Stylesheets\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Stylesheets\bootstrap.min.css.map" />
     <Content Include="Content\Stylesheets\bootstrap.css.map" />
     <Content Include="Content\Stylesheets\bootstrap-theme.min.css.map" />
@@ -511,27 +478,12 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Content\Stylesheets\toastr.scss" />
     <Content Include="Content\Stylesheets\toastr.less" />
-    <EmbeddedResource Include="Migrations\201702151434019_FixDb.resx">
-      <DependentUpon>201702151434019_FixDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702151453126_NextFix.resx">
-      <DependentUpon>201702151453126_NextFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702151507185_NextBulshit.resx">
-      <DependentUpon>201702151507185_NextBulshit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702151512179_NextBulshit1.resx">
-      <DependentUpon>201702151512179_NextBulshit1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702160914128_AddDefaultClientAndConsultant.resx">
-      <DependentUpon>201702160914128_AddDefaultClientAndConsultant.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702160933597_CorrectionInDbStructure.resx">
-      <DependentUpon>201702160933597_CorrectionInDbStructure.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702211345443_IsActiveBackgroundLogic.resx">
-      <DependentUpon>201702211345443_IsActiveBackgroundLogic.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Content\bootstrap\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\bootstrap\bootstrap-datetimepicker-build.less" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap\wells.less" />
     <Content Include="Content\bootstrap\variables.less" />
     <Content Include="Content\bootstrap\utilities.less" />
@@ -603,13 +555,11 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
-    <Content Include="Content\bootstrap\_bootstrap-datetimepicker.less" />
-    <Content Include="Content\bootstrap\bootstrap-datetimepicker-build.less" />
-    <EmbeddedResource Include="Migrations\201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.resx">
-      <DependentUpon>201702231505576_ChangeFieldNameFromProjectCostToProjectInvestment.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702241359118_Initial.resx">
+      <DependentUpon>201702241359118_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702231519388_ValidationMessageForProjectPriceAndInvestment.resx">
-      <DependentUpon>201702231519388_ValidationMessageForProjectPriceAndInvestment.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702241401441_AddDefaultProgramClientConsultant.resx">
+      <DependentUpon>201702241401441_AddDefaultProgramClientConsultant.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bloodhound.js" />
@@ -774,11 +724,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702100805515_InitialStructureOfDb.resx">
-      <DependentUpon>201702100805515_InitialStructureOfDb.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
