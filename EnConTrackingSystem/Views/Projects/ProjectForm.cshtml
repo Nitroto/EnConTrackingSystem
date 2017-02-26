@@ -1,5 +1,6 @@
-﻿@using System.Web.UI.WebControls
-@model EnConTrackingSystem.ViewModels.ProjectFormViewModel
+﻿@model EnConTrackingSystem.ViewModels.ProjectFormViewModel
+@using EnConTrackingSystem.Models
+
 @{
     ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -32,32 +33,33 @@
         @Html.TextAreaFor(p => p.ProjectInfo, new { @class = "form-control" })
     </div>
 
+    @Html.HiddenFor(p => p.ClientId)
     <div class="form-group">
         @Html.LabelFor(p => p.ClientId)
         <div class="form-inline">
-            @Html.HiddenFor(p => p.ClientId)
-            @Html.TextBoxFor(p => p.ClientId, new {@class = "form-control"})
-            <a href="@Url.Action("New", "Consultants")" class="btn btn-primary disabled">
+            @Html.AutocompleteFor(p => p.ClientName, p => p.ClientId, "GetClients", "Projects", false)
+            <a href="@Url.Action("New", "Clients")" class="btn btn-primary disabled">
                 <span class='glyphicon glyphicon-plus'></span>
             </a>
         </div>
     </div>
 
+    @Html.HiddenFor(p => p.ConsultantId)
     <div class="form-group">
         @Html.LabelFor(p => p.ConsultantId)
         <div class="form-inline">
-            @Html.TextBoxFor(p => p.ConsultantId, new { @class = "form-control" })
+            @Html.AutocompleteFor(p => p.ConsultantName, p => p.ConsultantId, "GetConsultants", "Projects", false)
             <a href="@Url.Action("New", "Consultants")" class="btn btn-primary disabled">
                 <span class='glyphicon glyphicon-plus'></span>
             </a>
         </div>
 
     </div>
-        @Html.HiddenFor(p => p.Id)
-        @Html.HiddenFor(p => p.ProgramId)
-        @Html.AntiForgeryToken()
+    @Html.HiddenFor(p => p.Id)
+    @Html.HiddenFor(p => p.ProgramId)
+    @Html.AntiForgeryToken()
 
-        <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">Save</button>
 }
 
 @section scripts

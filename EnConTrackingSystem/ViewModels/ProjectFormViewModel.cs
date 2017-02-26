@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using EnConTrackingSystem.Migrations;
 using EnConTrackingSystem.Models;
-using System.Linq;
-using System.Web.Mvc;
 
 namespace EnConTrackingSystem.ViewModels
 {
     public class ProjectFormViewModel
     {
-        private ApplicationDbContext _context;
-
-        public ProjectFormViewModel(int programId)
+        public ProjectFormViewModel(int programId, string clientName, string consultantName)
         {
             this.Id = 0;
-            this.ClientId = Defaults.ClientId;
-            this.ConsultantId = Defaults.ConsultantId;
             this.ProgramId = programId;
-            this._context = new ApplicationDbContext();
+            this.ClientId = Defaults.ClientId;
+            this.ClientName = clientName;
+            this.ConsultantId = Defaults.ConsultantId;
+            this.ConsultantName = consultantName;
         }
 
         public ProjectFormViewModel(Project project)
@@ -28,9 +24,10 @@ namespace EnConTrackingSystem.ViewModels
             this.ProjectPrice = project.ProjectPrice;
             this.ProjectInfo = project.ProjectInfo;
             this.ProgramId = project.ProgramId;
-            this.ClientId = project.ClientId;
-            this.ConsultantId = project.ConsultantId;
-            this._context = new ApplicationDbContext();
+            this.ClientId = project.Client.Id;
+            this.ClientName = project.Client.Name;
+            this.ConsultantId = project.Consultant.Id;
+            this.ConsultantName = project.Consultant.Name;
         }
 
         public int Id { get; set; }
@@ -56,49 +53,15 @@ namespace EnConTrackingSystem.ViewModels
         [Display(Name = "Client")]
         public int ClientId { get; set; }
 
+        public string ClientName { get; set; }
+
         [Display(Name = "Consultant")]
         public int ConsultantId { get; set; }
+
+        public string ConsultantName { get; set; }
 
         public string Title => this.Id != 0
             ? App_GlobalResources.Lang.TitleProjectFormEdit
             : App_GlobalResources.Lang.TitleProjectFormNew;
-
-        private List<Autocomplete> _GetClients(string query)
-        {
-            var clients = new List<Autocomplete>();
-
-            try
-            {
-                var results =
-                    this._context.Clients.Where(c => (c.Name).Contains(query)).OrderBy(c => c.Name).Take(10)
-                        .ToList();
-                foreach (var r in results)
-                {
-                    Autocomplete client = new Autocomplete();
-
-                    client.Name = r.Name;
-                    client.Id = r.Id;
-
-                    clients.Add(client);
-                }
-            }
-            catch
-            {
-                throw;
-            }
-
-            return clients;
-        }
-
-        public JsonResult GetClients(string query)
-        {
-            return NotImplementedException;
-            //return Json(this._GetClients(query),JsonRequestBehavior.AllowGet);
-        }
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    this._context.Dispose();
-        //}
     }
 }

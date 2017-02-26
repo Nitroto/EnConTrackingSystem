@@ -1,10 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
 namespace EnConTrackingSystem.Models
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IEnumerable<object>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<Consultant> Consultants { get; set; }
@@ -14,7 +15,7 @@ namespace EnConTrackingSystem.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            
+
         }
 
         public static ApplicationDbContext Create()
