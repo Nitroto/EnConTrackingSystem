@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using EnConTrackingSystem.Models;
 using EnConTrackingSystem.ViewModels;
@@ -17,6 +18,7 @@ namespace EnConTrackingSystem.Controllers
             this._context = new ApplicationDbContext();
         }
 
+        //Not used
         public ActionResult Index()
         {
             return View();
@@ -87,16 +89,39 @@ namespace EnConTrackingSystem.Controllers
             return View("ProjectForm", viewModel);
         }
 
+        //Not used
         public ActionResult Delete(int? id)
         {
-            throw new System.NotImplementedException();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var project = this._context.Projects.Find(id);
+
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View("_Delete", project);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            throw new System.NotImplementedException();
+            var project = this._context.Projects.Find(id);
+
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            this._context.Projects.Remove(project);
+            this._context.SaveChanges();
+
+            return RedirectToAction("Details", "Programs", new { id = id });
         }
 
         private IEnumerable<Autocomplete> _GetClients(string query)

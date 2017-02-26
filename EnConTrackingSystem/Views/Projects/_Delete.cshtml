@@ -1,0 +1,31 @@
+﻿@model EnConTrackingSystem.Models.Project
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Delete project</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete @Model.Name</p>
+                </div>
+                <div class="modal-footer">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.HiddenFor(p => p.Id)
+                        @Html.AntiForgeryToken()
+                        <p>
+                            <div class="btn-toolbar">
+                                <div class="btn-group">
+                                    <input type="submit" value=@EnConTrackingSystem.App_GlobalResources.Lang.Yes class="btn btn-danger" />
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </p>
+                    }
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->

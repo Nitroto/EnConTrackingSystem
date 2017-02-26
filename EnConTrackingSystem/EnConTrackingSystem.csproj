@@ -713,6 +713,7 @@
     <Content Include="Views\Projects\ProjectForm.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Programs\Delete.cshtml" />
+    <Content Include="Views\Projects\_Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

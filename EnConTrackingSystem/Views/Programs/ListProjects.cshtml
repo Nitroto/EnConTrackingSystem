@@ -10,9 +10,12 @@
         <div class="btn-group">
             @Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.BtnEditProgram, "Edit", "Programs", new { id = Model.Id }, new { @class = "btn btn-warning" })
         </div>
-        <div class="btn-group">
-            @Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.BtnDeleteProgram, "Delete", "Programs", new { id = Model.Id }, new { @class = "btn btn-danger" })
-        </div>
+        @if (Model.Id != EnConTrackingSystem.Models.Defaults.ProgramId)
+        {
+            <div class="btn-group">
+                @Html.ActionLink(EnConTrackingSystem.App_GlobalResources.Lang.BtnDeleteProgram, "Delete", "Programs", new { id = Model.Id }, new { @class = "btn btn-danger" })
+            </div>
+        }
     </div>
 </p>
 
