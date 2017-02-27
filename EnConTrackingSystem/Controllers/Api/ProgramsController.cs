@@ -49,6 +49,7 @@ namespace EnConTrackingSystem.Controllers.Api
 
         //POST /api/programs
         [HttpPost]
+        [Authorize(Roles = RoleName.Administrator)]
         public IHttpActionResult CreateProgram(ProgramDto programDto)
         {
             if (!ModelState.IsValid)
@@ -66,6 +67,7 @@ namespace EnConTrackingSystem.Controllers.Api
 
         //PUT /api/programs/{id}
         [HttpPut]
+        [Authorize(Roles = RoleName.Administrator)]
         public IHttpActionResult UpdateProgram(int id, ProgramDto programDto)
         {
             if (!ModelState.IsValid)
@@ -89,6 +91,7 @@ namespace EnConTrackingSystem.Controllers.Api
 
         //DELETE /api/programs/{id}
         [HttpDelete]
+        [Authorize(Roles = RoleName.Administrator)]
         public IHttpActionResult DeleteProgram(int id)
         {
             var programInDb = this._context.Programs.Include(p => p.Projects).SingleOrDefault(p => p.Id == id);

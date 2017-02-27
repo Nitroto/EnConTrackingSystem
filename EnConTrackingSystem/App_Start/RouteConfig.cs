@@ -13,6 +13,11 @@ namespace EnConTrackingSystem
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "",
+            //    url: "",
+            //    defaults: new{});
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

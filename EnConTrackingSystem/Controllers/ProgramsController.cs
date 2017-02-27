@@ -22,7 +22,7 @@ namespace EnConTrackingSystem.Controllers
             return View("List");
         }
 
-        //[Authorize(Roles = RoleName.CanManagePrograms)]
+        [Authorize(Roles = RoleName.Administrator)]
         public ViewResult New()
         {
             var viewModel = new ProgramFormViewModel();
@@ -31,6 +31,7 @@ namespace EnConTrackingSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Administrator)]
         public ActionResult Save(Program program)
         {
             if (!this.ModelState.IsValid)
@@ -70,6 +71,7 @@ namespace EnConTrackingSystem.Controllers
         }
 
         // PUT: /Program/Edit/{id}
+        [Authorize(Roles = RoleName.Administrator)]
         public ActionResult Edit(int id)
         {
             var program = this._context.Programs.Include(p => p.Projects).SingleOrDefault(p => p.Id == id);
@@ -84,6 +86,7 @@ namespace EnConTrackingSystem.Controllers
         }
 
         // GET: /Program/Delete/{id}
+        [Authorize(Roles = RoleName.Administrator)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,6 +107,7 @@ namespace EnConTrackingSystem.Controllers
         // POST: /Program/Delete/{id}
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.Administrator)]
         public ActionResult DeleteConfirmed(int id)
         {
             var program = this._context.Programs.Include(p => p.Projects).FirstOrDefault(p => p.Id == id);

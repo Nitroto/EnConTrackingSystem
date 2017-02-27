@@ -9,7 +9,6 @@ namespace EnConTrackingSystem
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js",
-                "~/Scripts/bootbox.js",
                 "~/Scripts/datatables/jquery.datatables.js",
                 "~/Scripts/datatables/datatables.bootstrap.js",
                 "~/Scripts/jquery-ui-1.12.1.js",
@@ -28,6 +27,7 @@ namespace EnConTrackingSystem
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js",
+                "~/Scripts/bootbox.js",
                 "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

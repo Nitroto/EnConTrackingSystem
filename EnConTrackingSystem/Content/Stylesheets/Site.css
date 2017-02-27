@@ -58,3 +58,12 @@ textarea {
     color: #52656B;
     background-color: #0097cf;
 }
+/*Typeahead style fix end*/
+
+.field-validation-error {
+    color: red;
+}
+
+.input-validation-error {
+    border: 2px solid red;
+}
