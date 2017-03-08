@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Net;
 using EnConTrackingSystem.Models;
 using EnConTrackingSystem.ViewModels;
+using EnConTrackingSystem.Toast;
 
 namespace EnConTrackingSystem.Controllers
 {
@@ -19,6 +20,7 @@ namespace EnConTrackingSystem.Controllers
         // GET: Programs
         public ActionResult Index()
         {
+            this.AddToastMessage("Congratulations", "You made it all the way here!", ToastType.Success);
             return View("List");
         }
 

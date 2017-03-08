@@ -14,8 +14,7 @@ namespace EnConTrackingSystem
                 "~/Scripts/jquery-ui-1.12.1.js",
                 "~/Scripts/typeahead.bundle.js",
                 "~/Scripts/typeahead.mvc.model.js",
-                "~/Scripts/moment-with-locales.js",
-                "~/Scripts/toastr.js"));
+                "~/Scripts/moment-with-locales.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                 "~/Scripts/jquery.validate*"));
@@ -29,6 +28,9 @@ namespace EnConTrackingSystem
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/bootbox.js",
                 "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/bundles/toastr", "http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js").Include(
+                "~/Scripts/toastr.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/Stylesheets/bootstrap.css",
@@ -36,8 +38,10 @@ namespace EnConTrackingSystem
                 "~/Content/DataTables/css/dataTables.jqueryui.css",
                 "~/Content/Stylesheets/jquery-ui/jquery-ui.css",
                 "~/Content/Stylesheets/typeahead.css",
-                "~/Content/Stylesheets/toastr.css",
                 "~/Content/Stylesheets/Site.css"));
+
+            bundles.Add(new StyleBundle("~/content/toastr", "http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css")
+                .Include("~/Content/Stylesheets/toastr.css"));
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿@model IEnumerable<EnConTrackingSystem.Models.Program>
+﻿@using EnConTrackingSystem.Models
+@model IEnumerable<Program>
 @{
     ViewBag.Title = EnConTrackingSystem.App_GlobalResources.Lang.Programs;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <h2>@EnConTrackingSystem.App_GlobalResources.Lang.Programs</h2>
 
@@ -25,7 +27,7 @@
 @section scripts
 {
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var table = $('#programs').DataTable({
                 ajax: {
                     url: '/api/programs',
@@ -35,27 +37,27 @@
                 columns: [
                     {
                         data: 'name',
-                        render: function(data, type, program) {
+                        render: function (data, type, program) {
                             return "<a href='/programs/details/" + program.id + "'>" + program.name + "</a>";
                         }
                     },
                     {
                         data: 'startDate',
                         className: 'dt-body-center',
-                        render: function(data, type, program) {
+                        render: function (data, type, program) {
                             return data != null ? data.slice(0, 10) : "-";
                         }
                     },
                     {
                         data: 'endDate',
                         className: 'dt-body-center',
-                        render: function(data, type, program) {
+                        render: function (data, type, program) {
                             return data != null ? data.slice(0, 10) : "-";
                         }
                     },
                     {
                         data: 'isActive',
-                        render: function(data, type, program) {
+                        render: function (data, type, program) {
                             return data
                                 ? "<span class='glyphicon glyphicon-ok'/> Active"
                                 : "<span class='glyphicon glyphicon-remove' /> Inactive";
@@ -66,7 +68,7 @@
 
             $('#programs tbody').on('click',
                 'tr',
-                function() {
+                function () {
                     var program = table.row(this).data();
                     $(location).attr('href', '/programs/details/' + program.id);
                 });
