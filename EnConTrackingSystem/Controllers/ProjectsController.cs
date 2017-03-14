@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using EnConTrackingSystem.Models;
+using EnConTrackingSystem.Toast;
 using EnConTrackingSystem.ViewModels;
 
 namespace EnConTrackingSystem.Controllers
@@ -58,9 +59,11 @@ namespace EnConTrackingSystem.Controllers
                 return View("ProjectForm", viewModel);
             }
 
+            var message = "";
             if (project.Id == 0)
             {
                 this._context.Projects.Add(project);
+                message = "created";
             }
             else
             {
@@ -70,8 +73,10 @@ namespace EnConTrackingSystem.Controllers
                 projectInDb.ProjectInvestment = project.ProjectInvestment;
                 projectInDb.ProjectPrice = project.ProjectPrice;
                 projectInDb.ProjectInfo = project.ProjectInfo;
+                message = "edited";
             }
             this._context.SaveChanges();
+            this.AddToastMessage("Congratulations", $"Program {project.Name} {message} successfully!", ToastType.Success);
 
             return RedirectToAction("Details", "Programs", new { id = project.ProgramId });
         }
@@ -104,7 +109,7 @@ namespace EnConTrackingSystem.Controllers
                 return HttpNotFound();
             }
 
-            return View("_Delete", project);
+            return PartialView(project);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -120,8 +125,9 @@ namespace EnConTrackingSystem.Controllers
 
             this._context.Projects.Remove(project);
             this._context.SaveChanges();
+            this.AddToastMessage("Congratulations", $"Program {project.Name} deleted successfully!", ToastType.Warning);
 
-            return RedirectToAction("Details", "Programs", new { id = id });
+            return RedirectToAction("Details", "Programs", new { id = project.ProgramId });
         }
 
         private IEnumerable<Autocomplete> _GetClients(string query)

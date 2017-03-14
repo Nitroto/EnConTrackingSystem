@@ -20,8 +20,6 @@
         </div>
         <div class="btn-group">
             @*@Html.BeginForm("Delete", "Projects", new { id = Model.Id }, new { @class = "btn btn-danger" })*@
-
-
             @using (Html.BeginForm("Delete", "Projects", new { id = Model.Id }))
             {
                 <!-- Button trigger modal -->
@@ -31,8 +29,6 @@
 
                 @Html.Partial("_Delete")
             }
-
-
         </div>
     </div>
 </p>

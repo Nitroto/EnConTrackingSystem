@@ -39,9 +39,20 @@
         @Html.LabelFor(p => p.ClientId)
         <div class="form-inline">
             @Html.AutocompleteFor(p => p.ClientName, p => p.ClientId, "GetClients", "Projects", false)
-            <a href="@Url.Action("New", "Clients")" class="btn btn-primary disabled">
+
+            @using (Html.BeginForm("New", "Clients", new { id = Model.Id }))
+            {
+                <!-- Button trigger modal -->
+                <a href="@Url.Action("New", "Clients")" class="btn btn-primary" data-toggle="modal" data-target="#new-client-modal">
+                    <span class='glyphicon glyphicon-plus'></span>
+                </a>
+
+                @Html.Partial("../Clients/_New")
+            }
+
+            @*<a href="@Url.Action("New", "Clients")" class="btn btn-primary">
                 <span class='glyphicon glyphicon-plus'></span>
-            </a>
+            </a>*@
         </div>
     </div>
 

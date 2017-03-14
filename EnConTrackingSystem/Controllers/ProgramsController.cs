@@ -20,7 +20,6 @@ namespace EnConTrackingSystem.Controllers
         // GET: Programs
         public ActionResult Index()
         {
-            this.AddToastMessage("Congratulations", "You made it all the way here!", ToastType.Success);
             return View("List");
         }
 
@@ -43,9 +42,11 @@ namespace EnConTrackingSystem.Controllers
                 return View("ProgramForm", viewModel);
             }
 
+            var message = "";
             if (program.Id == 0)
             {
                 this._context.Programs.Add(program);
+                message = "created";
             }
             else
             {
@@ -54,8 +55,10 @@ namespace EnConTrackingSystem.Controllers
                 programInDb.Name = program.Name;
                 programInDb.StartDate = program.StartDate;
                 programInDb.EndDate = program.EndDate;
+                message = "edited";
             }
             this._context.SaveChanges();
+            this.AddToastMessage("Congratulations", $"Program {program.Name} {message} successfully!", ToastType.Success);
 
             return RedirectToAction("Index", "Programs");
         }
@@ -126,6 +129,7 @@ namespace EnConTrackingSystem.Controllers
 
             this._context.Programs.Remove(program);
             this._context.SaveChanges();
+            this.AddToastMessage("Congratulations", $"Program {program.Name} deleted successfully!", ToastType.Warning);
 
             return RedirectToAction("Index", "Programs");
         }

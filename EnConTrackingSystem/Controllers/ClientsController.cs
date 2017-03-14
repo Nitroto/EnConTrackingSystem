@@ -16,7 +16,7 @@ namespace EnConTrackingSystem.Controllers
 
         public ActionResult New()
         {
-            throw new NotImplementedException();
+            return PartialView();
         }
     }
 }
